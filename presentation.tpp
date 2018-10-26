@@ -6,7 +6,7 @@
 --date today
 
 --withborder
-A good environment help us develop quick, easy, and be coolest.
+A good environment helps us develop quick, easy, and be cool.
 
 
 --center Let's get started!
