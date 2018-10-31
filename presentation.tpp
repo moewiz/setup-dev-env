@@ -1,49 +1,65 @@
 --author Khoa Nguyen <khoand@zigvy.com>
 
---title Setup Dev Environment
---center w/ me
-
 --date today
 
---withborder
-A good environment helps us develop quick, easy, and be cool.
 
+
+
+--title Setup Dev Environment
+--center with me!
+
+
+--withborder
+--center A good environment helps us develop quick, easy, and be cool.
+
+---
 
 --center Let's get started!
 
 --newpage
-
 --title Homebrew
 
 --center Homebrew installs the stuff you need that Apple didn't
 
+
+---
 "To install, drag this icon..." no more.
+---
 
 --beginshelloutput
 $ brew install git
 --endshelloutput
 
 --newpage
---title Developer Tools
---center Visual Studio Code - Open Source
+--heading Developer Tools
+
+--title Visual Studio Code - Open Source
+
+--center Microsoft
+
+---
+  * IntelliSense
+
+  * Debugging
+
+  * Built-in Git
+
+  * Extensions
+---
 
 --beginshelloutput
 $ brew cask install visual-studio-code
 --endshelloutput
 
-* IntelliSense
-* Debugging
-* Built-in Git
-* Extensions
-
-- Microsoft
-
 --newpage
+--heading Visual Studio Code - Open Source
 
---center Settings
+--title Settings
 // in settings.json
 "editor.renderWhitespace": "all",
 "eslint.autoFixOnSave": true
+
+---
 
 // in keybindings.json
 {
@@ -51,9 +67,15 @@ $ brew cask install visual-studio-code
   "command": "eslint.executeAutofix"
 }
 
-Thank you 
+
+---
+--beginslideleft
+  Thank you 
 --color cyan
-thanhdat301
+--boldon
+  thanhdat301
+--color white
+--endslideleft
 
 --newpage
 --heading Terminal
@@ -61,47 +83,112 @@ thanhdat301
 --title iTerm
 --center Terminal emulator
 
-* split panes
+  * Split panes
 
-cmd + d for horizontal pane.
-cmd + shift + d for vertically pane.
+---
+    cmd + d for horizontal pane.
 
+---
+    cmd + shift + d for vertically pane.
+
+
+--beginshelloutput
+$ brew cask install iterm2
+--endshelloutput
+
+
+---
+--boldon
 Most of the "magic" comes from Zsh!
 
 --newpage
 --heading Shell
+
 --title Zsh - Z Shell
 
-* plugin and theme
-
-
---newpage
---title Fira Code
-I use the
---color yellow
-Fira Code
-font for my terminal
-
-
---newpage
---heading Design
---title Sketch
-
-I use
---color #cf92b7
-Sketch
-or all of my screenshot
+---
+  * Plugin and theme support
+---
+  * Tab completion for Git
+---
+  * Automatic cd
+---
+  * And more!
 
 
 --beginshelloutput
-$ brew cask install sketch
+$ brew install zsh
 --endshelloutput
 
 
+--newpage
+--heading Font
 
+--title Fira Code
+
+I use the
+--color yellow
+Fira Code
+--color white
+font for my terminal
+
+--beginshelloutput
+$ brew tap caskroom/fonts
+---
+$ brew cask install font-fira-code
+--endshelloutput
 
 --newpage
+--heading Other stuffs
 
+--title Community
+
+--title Slack
+
+--center Slack is a powerful tool for making team communication fast and easy.
+--center <zigvy.slack.com>
+
+---
+
+  #research
+---
+
+  #support-114
+---
+
+  #time-tracking
+---
+
+  #zigvy_f17
+---
+
+  #gaming
+---
+
+  #hr
+
+---
+--beginoutput
+$ brew cask install slack
+--endoutput
+
+--newpage
+--heading Design
+
+--title Sketch
+
+I use
+--color magenta
+Sketch
+--color white
+for all of my screenshot
+
+---
+--beginoutput
+$ brew cask install sketch
+--endoutput
+
+--newpage
 --title nvm - Node Version Manager
 
 --center Simple bash script to manage multiple node.js versions
