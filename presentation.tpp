@@ -108,13 +108,17 @@ Most of the "magic" comes from Zsh!
 
 ---
   * Plugin and theme support
+
 ---
   * Tab completion for Git
+
 ---
   * Automatic cd
+
 ---
   * And more!
 
+---
 
 --beginshelloutput
 $ brew install zsh
