@@ -95,6 +95,60 @@ $ brew cask install visual-studio-code
 $ brew cask install iterm2
 --endshelloutput
 
+--newpage
+---heading Terminal
+
+--title Shortcuts
+
+--center Move like Jagger
+
+---
+  * Ctrl + a      jump to start of the line
+
+---
+  * Ctrl + e      jump to end of the line
+
+---
+  * Ctrl + h      delete the character backwards from cursor position
+
+---
+  * Ctrl + w      delete the word backwards from cursor position
+
+---
+  * Ctrl + k      kill the line starting from the cursor position
+
+---
+  * Ctrl + y      yank text from the kill buffer
+
+---
+  * Esc  + b      backward word
+
+---
+  * Esc  + f      forward word
+
+--newpage
+--heading Terminal
+
+--title Shortcuts
+
+---
+  * ⌘  + →        move to next window
+
+---
+  * ⌘  + ←        move to prev window
+
+---
+  * ⌘  + ⌥  + →   move to right pane
+
+---
+  * ⌘  + ⌥  + ←   move to left pane
+
+---
+  * ⌘  + ⌥  + ↑   move to up pane
+
+---
+  * ⌘  + ⌥  + ↓   move to down pane
+
 
 ---
 --boldon
