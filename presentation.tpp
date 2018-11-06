@@ -100,7 +100,7 @@ $ brew cask install iterm2
 
 --title Shortcuts
 
---center Move like Jagger
+--center Moves like Jagger
 
 ---
   * Ctrl + a      jump to start of the line
@@ -187,9 +187,9 @@ Managing your Zsh configuration
 
   * 200+ Plugins
 
-  * 1100+ Plugins
+  * 1100+ Contributors
 
-  * 140+ Plugins
+  * 140+ Themes
 
 --beginoutput
 $ sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
@@ -251,13 +251,13 @@ $ brew cask install slack
 
 I use
 --color magenta
-Sketch
+Skitch
 --color white
 for all of my screenshot
 
 ---
 --beginoutput
-$ brew cask install sketch
+$ brew cask install skitch
 --endoutput
 
 --newpage
