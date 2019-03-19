@@ -8,7 +8,7 @@ I believe a good environment helps us develop quick, easy and be cool.
 
 Simple setup.
 
-  - Vim plugin manager: [vim-plug](https://github.com/junegunn/vim-plug)
-  - Copy .vimrc to ~/.vimrc
-  - Install plugins
+1. Download Vim plugin manager: [vim-plug](https://github.com/junegunn/vim-plug#installation)
+2. Copy .vimrc to your `~/.vimrc`
+3. Reload `.vimrc` and `:PlugInstall` to install plugins
 
