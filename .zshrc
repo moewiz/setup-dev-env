@@ -9,8 +9,6 @@ export ZSH=$HOME/.oh-my-zsh
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-
-# Install: https://github.com/denysdovhan/spaceship-prompt#oh-my-zsh
 ZSH_THEME="spaceship"
 
 # Set list of themes to load
@@ -66,8 +64,13 @@ plugins=(
   zsh-autosuggestions
   zsh-syntax-highlighting
   tmux
+  osx
+  yarn
+  web-search
   zsh-interactive-cd
   zsh-completions
+  z
+  zsh-nvm
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -128,14 +131,13 @@ _fzf_compgen_dir() {
   fd --type d --hidden --follow --exclude ".git" . "$1"
 }
 
-source ~/.nvm/nvm.sh
-
 # Shortcuts
 alias d="cd ~/Documents/Dropbox"
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
 alias zv="cd ~/Desktop/zigvy"
 alias p="cd ~/projects"
+alias ystl="yarn start-local"
 
 # IP addresses
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
@@ -216,18 +218,6 @@ fcoc() {
   git checkout $(echo "$commit" | sed "s/ .*//")
 }
 
-# fshow - git commit browser
-fshow() {
-  git log --graph --color=always \
-      --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
-  fzf --ansi --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort \
-      --bind "ctrl-m:execute:
-                (grep -o '[a-f0-9]\{7\}' | head -1 |
-                xargs -I % sh -c 'git show --color=always % | less -R') << 'FZF-EOF'
-                {}
-FZF-EOF"
-}
-
 alias glNoGraph='git log --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr% C(auto)%an" "$@"'
 _gitLogLineToHash="echo {} | grep -o '[a-f0-9]\{7\}' | head -1"
 _viewGitLogLine="$_gitLogLineToHash | xargs -I % sh -c 'git show --color=always % | diff-so-fancy'"
@@ -242,7 +232,7 @@ fcoc_preview() {
 }
 
 # fshow_preview - git commit browser with previews
-fshow_preview() {
+fshow() {
     glNoGraph |
         fzf --no-sort --reverse --tiebreak=index --no-multi \
             --ansi --preview="$_viewGitLogLine" \
@@ -254,5 +244,39 @@ fshow_preview() {
 # END_GIT_CONFIGS
 # ---------------
 
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /Users/khoanguyen/.config/yarn/global/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/khoanguyen/.config/yarn/global/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /Users/khoanguyen/.config/yarn/global/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/khoanguyen/.config/yarn/global/node_modules/tabtab/.completions/sls.zsh
+# GRC Generic colorier
+[[ -s "/etc/grc.zsh" ]] && source /etc/grc.zsh
 
+# c - browse chrome history
+c() {
+  local cols sep google_history open
+  cols=$(( COLUMNS / 3 ))
+  sep='{::}'
 
+  if [ "$(uname)" = "Darwin" ]; then
+    google_history="$HOME/Library/Application Support/Google/Chrome/Default/History"
+    open=open
+  else
+    google_history="$HOME/.config/google-chrome/Default/History"
+    open=xdg-open
+  fi
+  cp -f "$google_history" /tmp/h
+  sqlite3 -separator $sep /tmp/h \
+    "select substr(title, 1, $cols), url
+     from urls order by last_visit_time desc" |
+  awk -F $sep '{printf "%-'$cols's  \x1b[36m%s\x1b[m\n", $1, $2}' |
+  fzf --ansi --multi | sed 's#.*\(https*://\)#\1#' | xargs $open > /dev/null 2> /dev/null
+}
+
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi
