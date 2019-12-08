@@ -63,14 +63,11 @@ plugins=(
   git-flow
   zsh-autosuggestions
   zsh-syntax-highlighting
-  tmux
   osx
   yarn
   web-search
-  zsh-interactive-cd
   zsh-completions
   z
-  zsh-nvm
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -116,6 +113,7 @@ export FZF_DEFAULT_COMMAND='fd --type f'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # zsh-autosuggestions
+# Ctrl + Space to execute the suggestion
 bindkey '^ ' autosuggest-accept
 
 # Use fd (https://github.com/sharkdp/fd) instead of the default find
@@ -135,7 +133,6 @@ _fzf_compgen_dir() {
 alias d="cd ~/Documents/Dropbox"
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
-alias zv="cd ~/Desktop/zigvy"
 alias p="cd ~/projects"
 alias ystl="yarn start-local"
 
@@ -157,7 +154,7 @@ alias checkout='gco $(gb | fzf)'
 
 # Load rbenv automatically by appending
 # the following to ~/.bash_profile:
-eval "$(rbenv init -)"
+# eval "$(rbenv init -)"
 
 # ------------
 # BEGIN_GIT_CONFIGS
